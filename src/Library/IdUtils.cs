@@ -45,7 +45,7 @@ public static class IdUtils
             int checkSum = 0;
             for (int i = 0; i < referenceArray.Length; i++)
             {
-                checkSum = checkSum + (idAsIntArray[i] * referenceArray[i]);
+                checkSum += idAsIntArray[i] * referenceArray[i];
             }
 
             int checkDigit = 10 - (checkSum % 10);

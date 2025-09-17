@@ -78,24 +78,38 @@ public class PersonTests
     }
 
     [Test]
-    public void TestCorrectId()
+    public void TestIncorrectNullId()
     {
         // Arrange
-        string inputId = "5843923-1", expectedId = "58439231";
+        string inputId = "", expectedResult = null;
+        Person person = new Person("Agustín Suarez", inputId);
+        
+        // Act
+        string resultId = person.Id;
+        
+        // Assert
+        Assert.AreEqual(expectedResult, resultId);
+    }
+
+    [Test]
+    public void TestIncorrectFinalDigitId()
+    {
+        // Arrange
+        string inputId = "5843923-1", expectedResult = null;
         Person person = new Person("Agustín Suarez", inputId);
 
         // Act
         string resultId = person.Id;
 
         // Assert
-        Assert.AreEqual(expectedId, resultId);
+        Assert.AreEqual(expectedResult, resultId);
     }
 
     [Test]
-    public void TestIncorrectIdFormatWithValidResult()
+    public void TestCorrectId()
     {
         // Arrange
-        string inputId = "5.843.923-1", expectedId = "58439231";
+        string inputId = "3.454.931-3", expectedId = "3.454.931-3";
         Person person = new Person("Agustín Suarez", inputId);
 
         // Act
