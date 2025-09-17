@@ -24,7 +24,7 @@ public class Person
     /// <param name="id">La cédula de la persona.</param>
     public Person(string name, string id)
     {
-        this.id = id;
+        this.Id = id;
         this.Name = name;
     }
 
@@ -62,7 +62,7 @@ public class Person
 
         set
         {
-            if (!IdUtils.IdIsValid(value))
+            if (IdUtils.IdIsValid(value))
             {
                 this.id = value;
             }

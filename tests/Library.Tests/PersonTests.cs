@@ -76,4 +76,60 @@ public class PersonTests
             Assert.That(consoleContent.ToString(), Does.Contain(hi));
         }
     }
+
+    [Test]
+    public void TestCorrectId()
+    {
+        // Arrange
+        string inputId = "5843923-1", expectedId = "58439231";
+        Person person = new Person("Agustín Suarez", inputId);
+
+        // Act
+        string resultId = person.Id;
+
+        // Assert
+        Assert.AreEqual(expectedId, resultId);
+    }
+
+    [Test]
+    public void TestIncorrectIdFormatWithValidResult()
+    {
+        // Arrange
+        string inputId = "5.843.923-1", expectedId = "58439231";
+        Person person = new Person("Agustín Suarez", inputId);
+
+        // Act
+        string resultId = person.Id;
+
+        // Assert
+        Assert.AreEqual(expectedId, resultId);
+    }
+
+    [Test]
+    public void TestIncorrectLargeId()
+    {
+        // Arrange
+        string inputId = "848489593764", expectedResult = null;
+        Person person = new Person("Agustín Suarez", inputId);
+
+        // Act
+        string resultId = person.Id;
+        
+        // Assert
+        Assert.AreEqual(expectedResult, resultId);
+    }
+
+    [Test]
+    public void TestIncorrectShortId()
+    {
+        // Arrange
+        string inputId = "38284", expectedResult = null;
+        Person person = new Person("Agustín Suarez", inputId);
+        
+        // Act
+        string resultId = person.Id;
+        
+        // Assert
+        Assert.AreEqual(expectedResult, resultId);
+    }
 }
